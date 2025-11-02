@@ -5,7 +5,7 @@
 #================================Task 1 end=========================================
 # Ask the user to enter a word, and print the same word in all uppercase and all lowercase letters.
 #================================Task 2 start=======================================
-# my_word = "Apocalypse"
+# my_word = input("enter a word: ")
 # print(my_word.upper())
 # print(my_word.lower())
 #================================Task 2 end=========================================
