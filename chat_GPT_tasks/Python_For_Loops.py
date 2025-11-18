@@ -31,3 +31,28 @@
 # for item in my_dict:
 #     print(f"{item}: {my_dict[item]}")
 #================================Task 3 end==========================================
+# Here are 3 practical tasks for Python For Loops, based on everything you have learned so far:
+#
+# Create a function that takes a list of numbers as a parameter. Use a for loop and the range() function to print each number multiplied by 2.
+#================================Task 4 start========================================
+# def multiplier_by_2(*my_list):
+#     for item in my_list:
+#         print(item * 2)
+#
+# multiplier_by_2(1, 2, 3, 6, 3)
+
+#================================Task 4 end==========================================
+# Create an array with 5 items (any strings). Use a for loop with an iterator to go through the array and print each element in uppercase.
+#================================Task 5 start========================================
+# my_array = ["dog", "cat", "parrot", "cow", "Angela Merkel"]
+# for index in range(len(my_array)):
+#     print(my_array[index].upper())
+#================================Task 5 end==========================================
+# Create a module (a separate .py file) that contains a function returning today’s date.
+# In your main script, import this module and use a for loop to print the date 7 times.
+#================================Task 6 start========================================
+# import module
+#
+# for index in range(7):
+#     print(module.todays_date())
+#================================Task 6 end==========================================
