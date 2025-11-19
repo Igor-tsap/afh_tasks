@@ -124,3 +124,96 @@
 #================================Task 3 end=========================================
 #
 # Would you like me to add a **“bonus challenge”** that mixes `match`, `if...else`, and `dictionaries` for more advanced logic?
+# Bonus Challenge:
+# Create a program that works like a small product recommendation system.
+#
+# Make a dictionary where the keys are product categories (for example: "phone", "laptop", "tablet") and the values are dictionaries that contain:
+# • "price"
+# • "brand"
+# • "stock" (number of items available)
+#
+# Ask the user to enter a category name.
+#
+# Use a match statement to check which category was requested:
+# • If the category exists, then use if...else logic to:
+# – Print the product info from the dictionary
+# – Check if stock > 0 → print “Available”
+# – Else → print “Out of stock”
+# • If the category does not match any option, print “Unknown category”.
+#
+# As an extra step, allow the user to type “discount” to apply a 10% price reduction to the chosen product (use if...else inside the match case).
+#================================Task 4 start=======================================
+
+
+category = {
+    "phone" : {
+        "price" : 1000,
+        "brand" : "apple",
+        "stock" : 11
+    },
+    "laptop" : {
+        "price" : 1200,
+        "brand" : "dell",
+        "stock" : 0
+    },
+    "tablet" : {
+        "price" : 1100,
+        "brand" : "samsung",
+        "stock" : 100
+    }
+}
+
+user_input = input("Enter category name: ")
+
+# match user_input:
+#     case "phone":
+#         if category["phone"]["stock"] < 1:
+#             print("Out of stock")
+#         else:
+#             if input("Do you want a discount? ") != "no":
+#                 category["phone"]["price"] *= 0.9
+#                 print(f"{category["phone"]["brand"]} is available, the price is: {category["phone"]["price"]}")
+#             else:
+#                 print(f"{category["phone"]["brand"]} is available, the price is: {category["phone"]["price"]}")
+#     case "laptop":
+#         if category["laptop"]["stock"] < 1:
+#             print("Out of stock")
+#         else:
+#             if input("Do you want a discount? ") != "no":
+#                 category["laptop"]["price"] *= 0.9
+#                 print(f"{category["laptop"]["brand"]} is available, the price is: {category["laptop"]["price"]}")
+#             else:
+#                 print(f"{category["laptop"]["brand"]} is available, the price is: {category["laptop"]["price"]}")
+#     case "tablet":
+#         if category["tablet"]["stock"] < 1:
+#             print("Out of stock")
+#         else:
+#             if input("Do you want a discount? ") != "no":
+#                 category["tablet"]["price"] *= 0.9
+#                 print(f"{category["tablet"]["brand"]} is available, the price is: {category["tablet"]["price"]}")
+#             else:
+#                 print(f"{category["tablet"]["brand"]} is available, the price is: {category["tablet"]["price"]}")
+#     case _:
+#         print("Unknown category")
+
+def my_function(item):
+    if category[item]["stock"] < 1:
+        print("Out of stock")
+    else:
+        if input("Do you want a discount? ") != "no":
+            category[item]["price"] *= 0.9
+            print(f"{category[item]["brand"]} is available, the price is: {category[item]["price"]}")
+        else:
+            print(f"{category[item]["brand"]} is available, the price is: {category[item]["price"]}")
+
+
+match user_input:
+    case "phone":
+        my_function("phone")
+    case "laptop":
+        my_function("laptop")
+    case "tablet":
+        my_function("tablet")
+    case _:
+        print("Unknown category")
+#================================Task 4 end=========================================
