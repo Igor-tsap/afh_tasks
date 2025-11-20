@@ -132,3 +132,83 @@
 #================================Task 3 end=========================================
 #
 # Would you like me to add a **4th “bonus challenge”** that mixes dictionaries with lists (e.g., a list of dictionaries for multiple students or products)?
+# Here is a **bonus challenge** that mixes **dictionaries** and **lists** in a practical and realistic way:
+#
+# ---
+#
+# **Bonus Challenge: Student Progress Tracker**
+#
+# Create a program that manages a list of students, where each student is represented as a **dictionary** containing:
+#
+# • "name"
+# • "age"
+# • "grades" → a **list** of numbers
+# • "passed" → a boolean value (True/False)
+#
+# **Your tasks:**
+#
+# 1. Create a **list of at least 3 student dictionaries**.
+#
+# 2. Write a loop that goes through each student and:
+#    • calculates the average grade (using sum and len)
+#    • if the average is 60 or higher → set "passed" to True
+#    • otherwise → set "passed" to False
+#
+# 3. After updating all students, print a clear summary:
+#    • Name
+#    • Average grade
+#    • "Status: Passed" or "Status: Failed"
+#
+# 4. Add a feature where the user enters a student name, and the program searches the list:
+#    • If the student exists → print the full dictionary of that student
+#    • If not → print "Student not found"
+#
+# ---
+#
+# If you want, I can also give you a version of this challenge for **products**, **inventory**, or **shopping carts**.
+#================================Task 4 start=======================================
+student_1 = {
+    "name": "Tom",
+    "age": 18,
+    "grades": [10, 8, 9, 3, 9, 0, 7, 8, 10, 8],
+    "passed": False
+    }
+student_2 = {
+    "name": "Nick",
+    "age": 34,
+    "grades": [5, 10, 8, 10, 5, 7, 4, 7, 8, 3],
+    "passed": False
+    }
+student_3 = {
+    "name": "George",
+    "age": 21,
+    "grades": [8, 7, 3, 5, 3, 4, 3, 4, 6, 3],
+    "passed": False
+    }
+
+student_list = [student_1, student_2, student_3]
+
+the_name = input("Enter students name (Tom, George or Nick): ")
+
+found = False
+for student in student_list:
+    if student["name"] == the_name:
+        found = True
+        print()
+        student["average_grade"] = sum(student["grades"]) / len(student["grades"])
+        if student["average_grade"] >= 6:
+            student["passed"] = True
+        else:
+            student["passed"] = False
+        print(f"name: {student["name"]},")
+        print(f"average_grade: {student["average_grade"]}")
+        if student["passed"]:
+            print("status: passed")
+        else:
+            print("status: loser in life")
+        print()
+        break
+
+if not found:
+        print("Student not found")
+#================================Task 4 end=========================================
