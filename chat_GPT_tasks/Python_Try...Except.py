@@ -68,4 +68,79 @@
 #     if result != None:
 #         print(result)
 # =====================================Task 3 end=======================================
-# If you want, I can also make harder tasks or mix multiple topics you already learned.
+# Task 4 — Safe dictionary lookup
+# Create a dictionary with 3 products and their prices.
+# Ask the user to enter a product name.
+# Use try/except to catch a KeyError when the product does not exist.
+# If the product is found, print its price.
+# If not, print “Product not found”.
+# =====================================Task 4 start=====================================
+# my_dict = {
+#     "milk": 40,
+#     "bread": 30,
+#     "eggs": 90
+# }
+#
+# user_search = input("enter product: ")
+#
+# try:
+#     print(my_dict[user_search])
+# except KeyError:
+#     print("Product not found")
+# =====================================Task 4 end=======================================
+# Task 5 — Safe list-to-int conversion
+# Create a list containing strings: ["10", "20", "hello", "30"].
+# Ask the user for an index.
+# Use try/except to catch:
+# • IndexError (invalid index)
+# • ValueError (when converting item to int fails)
+# If successful, convert the item to int and multiply it by 3.
+# If an error occurs, print the correct message.
+# =====================================Task 5 start=====================================
+# my_list = ["10", "20", "hello", "30"]
+#
+# try:
+#     user_index = int(input("enter index: "))
+#     print(int(my_list[user_index]) * 3)
+#
+# except IndexError:
+#     print("invalid index")
+#
+# except ValueError:
+#     print("invalid number")
+# =====================================Task 5 end=======================================
+# Task 6 — Repeating input until valid
+# Ask the user to enter a valid number between 1 and 5.
+# Use a while loop + try/except:
+# • Try to convert input to int
+# • If ValueError happens, print “Not a number”
+# • If number is out of range, print “Number out of range”
+# Keep asking until the user enters a correct number.
+# When they finally enter it, print “Thank you!”
+# =====================================Task 6 start=====================================
+# # while True:
+# #     user_number = input("enter number 1-5: ")
+# #     try:
+# #         if not 1 <= int(user_number) <= 5:
+# #             raise Exception
+# #     except ValueError:
+# #         print("Not a number")
+# #     except Exception:
+# #         print("Number out of range")
+# #     else:
+# #         print("Thank you!")
+# #         break
+#
+# while True:
+#     try:
+#         number = int(input("enter number 1-5: "))
+#
+#         if 1 <= number <= 5:
+#             print("Thank you!")
+#             break
+#         else:
+#             print("Number out of range")
+#
+#     except ValueError:
+#         print("Not a number")
+# =====================================Task 6 end=======================================
