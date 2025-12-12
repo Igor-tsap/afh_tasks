@@ -120,6 +120,7 @@
 # =====================================Task 6 start=====================================
 # # while True:
 # #     user_number = input("enter number 1-5: ")
+# #
 # #     try:
 # #         if not 1 <= int(user_number) <= 5:
 # #             raise Exception
@@ -144,3 +145,83 @@
 #     except ValueError:
 #         print("Not a number")
 # =====================================Task 6 end=======================================
+# Task 7 — Safe division
+#
+# Ask the user for two numbers.
+# Use try/except to catch invalid input (ValueError) and division by zero (ZeroDivisionError).
+# If both numbers are valid and division is possible, print the result.
+# =====================================Task 7 start=====================================
+# try:
+#     num1 = int(input("num1: "))
+#     num2 = int(input("num2: "))
+#     print(num1 / num2)
+#
+# except ValueError:
+#     print("invalid number")
+#
+# except ZeroDivisionError:
+#     print("division by zero")
+# =====================================Task 7 end=======================================
+# Task 8 — List sum with user indices
+#
+# Create a list of 5 numbers.
+# Ask the user for two indices.
+# Use try/except to handle:
+# • IndexError if an index is out of range
+# • ValueError if the input is not a number
+# If both indices are valid, print the sum of the two list items.
+# =====================================Task 8 start=====================================
+# my_list = [5, 8, 23, 65, 5]
+# try:
+#     user_index1 = int(input("enter num1 0-4: "))
+#     user_index2 = int(input("enter num2 0-4: "))
+#     # print(sum([my_list[user_index1], my_list[user_index2]]))
+#     print(my_list[user_index1] + my_list[user_index2])
+#
+# except IndexError:
+#     print("index is out of range")
+#
+# except ValueError:
+#     print("not a number")
+# =====================================Task 8 end=======================================
+# Task 9 — Dictionary key check
+#
+# Create a dictionary with 3 students and their ages.
+# Ask the user to enter a student name.
+# Use try/except to catch KeyError if the name doesn’t exist.
+# If the name exists, print the student’s age.
+# =====================================Task 9 start=====================================
+# students = {
+#     "bob": 13,
+#     "tom": 26,
+#     "tim": 41
+# }
+#
+# try:
+#     user_name = input("name: ")
+#     print(students[user_name])
+#
+# except KeyError:
+#     print("name doesn’t exists")
+# =====================================Task 9 end=======================================
+# Task 10 — Math operations with input
+#
+# Ask the user to enter a number.
+# Use try/except to catch invalid input (ValueError).
+# If valid, calculate:
+# • square using ** operator
+# • square root using math.sqrt()
+# Print both results.
+# =====================================Task 10 start=====================================
+# from math import sqrt
+#
+# try:
+#     user_num = int(input("enter num: "))
+#
+# except ValueError:
+#     print("invalid input")
+#
+# else:
+#     print(user_num ** 2)
+#     print(sqrt(user_num))
+# =====================================Task 10 end=======================================
