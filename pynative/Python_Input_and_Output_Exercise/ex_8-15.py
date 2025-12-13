@@ -98,5 +98,6 @@
 #     Use the zfill() string method to pad it with leading zeros to the desired width.
 # =====================================ex_15_start=====================================
 # user_num = input("enter num: ")
+
 # print(user_num.zfill(5))
 # =====================================ex_15_end=======================================
