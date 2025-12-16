@@ -70,24 +70,24 @@
 # Bob        92
 # Charlie    78
 # =====================================ex_14_start=====================================
-# names = ["Alice", "Bob", "Charlie"]
-# scores = [85, 92, 78]
+names = ["Alice", "Bob", "Charlie"]
+scores = [85, 92, 78]
+
+# table = zip(names, scores)
 #
-# # table = zip(names, scores)
-# #
-# # print(f"Name {"Score":>10}\n"
-# #       "---------------"
-# # )
-# #
-# # for item in table:
-# #     print(f"{item[0]} {item[1]:>{11 - len(item[0])}}")
-#
-# print(f"{"Name":<10}{"Score":<10}\n"
+# print(f"Name {"Score":>10}\n"
 #       "---------------"
 # )
 #
-# for name, score in zip(names, scores):
-#     print(f"{name:<10}{score:<10}")
+# for item in table:
+#     print(f"{item[0]} {item[1]:>{11 - len(item[0])}}")
+
+print(f"{"Name":<10}{"Score":<10}\n"
+      "---------------"
+)
+
+for name, score in zip(names, scores):
+    print(f"{name:<10}{score:<10}")
 # =====================================ex_14_end=======================================
 # Ask the user for a number. Print this number padded with leading zeros to a width of 5.
 #
