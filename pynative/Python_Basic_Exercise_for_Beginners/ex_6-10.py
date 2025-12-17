@@ -84,6 +84,6 @@
 #
 # list3 = [num for num in list1 if num % 2 == 1]
 # list4 = [num for num in list2 if num % 2 == 0]
-# 
+#
 # print(f"result list: {list3 + list4}")
 # =====================================ex_10_end======================================
