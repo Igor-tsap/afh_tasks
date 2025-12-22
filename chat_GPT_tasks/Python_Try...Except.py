@@ -213,15 +213,15 @@
 # • square root using math.sqrt()
 # Print both results.
 # =====================================Task 10 start=====================================
-# from math import sqrt
-#
-# try:
-#     user_num = int(input("enter num: "))
-#
-# except ValueError:
-#     print("invalid input")
-#
-# else:
-#     print(user_num ** 2)
-#     print(sqrt(user_num))
+from math import sqrt
+
+try:
+    user_num = int(input("enter num: "))
+
+except ValueError:
+    print("invalid input")
+
+else:
+    print(user_num ** 2)
+    print(sqrt(user_num))
 # =====================================Task 10 end=======================================
