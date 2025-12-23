@@ -1,0 +1,1 @@
+{"apple": {"id": 1, "price": 20, "in_stock": true}, "banana": {"id": 2, "price": 40, "in_stock": false}, "tomato": {"id": 3, "price": 50, "in_stock": true}}
