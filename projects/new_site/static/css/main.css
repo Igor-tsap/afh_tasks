@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "UnifrakturMaguntia";
+  src: url("../fonts/UnifrakturMaguntia-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RobotoMono";
+  src: url("../fonts/RobotoMono-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+body {
+    display: grid;
+    margin: 0 auto;
+    font-family: "UnifrakturMaguntia", serif;
+    text-align: center;
+    place-items: center;
+
+    table {
+        border-collapse: collapse;
+        width: auto;
+        margin: 20px
+        border: 1px solid #A9a9a9;
+        padding: 4px 20px;
+        font-family: "RobotoMono", serif;
+    }
+
+    th, td {
+        border: 1px solid #000000;
+        padding: 4px 20px;
+    }
+
+}

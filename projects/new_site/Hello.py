@@ -16,16 +16,16 @@ def index():
 def hello_admin():
     return "Hello Admin!"
 
-@app.route("/guest/<guest>")
-def hello_guest(guest):
-    return f"Hello {guest} as Guest!"
+@app.route("/guest/<name>")
+def hello_guest(name):
+    return render_template("blog.html", name = name)
 
 @app.route("/success/<name>")
 def success(name):
     if name == "admin":
         return redirect(url_for("hello_admin"))
     else:
-        return redirect(url_for("hello_guest", guest = name))
+        return redirect(url_for("hello_guest", name = name))
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
@@ -36,9 +36,18 @@ def login():
         user = request.args.get("nm")
         return redirect(url_for("success", name = user))
 
-@app.route("/<name>/<int:post_id>")
+@app.route("/guest/<name>/<int:post_id>")
 def show_blog(name, post_id):
-    return f"{name}'s post number {post_id}!"
+    return render_template("post.html", marks = post_id, name= name)
+
+@app.route("/result", methods= ["POST", "GET"])
+def result():
+    if request.method == "POST":
+        result = request.form
+        return render_template("result.html", result = result)
+
+
+
 
 
 

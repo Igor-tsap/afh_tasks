@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+<head>
+    <title>{{name}}</title>
+</head>
+{% endblock %}
+{% block body %}
+<body>
+    {% if marks > 50  %}
+        <h1> Your result is pass {{ name }}</h1>
+    {% else %}
+        <h1> Your result is fail {{ name }} </h1>
+    {% endif %}
+
+</body>
+{% endblock %}

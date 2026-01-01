@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+<head>
+    <title>result</title>
+</head>
+{% endblock %}
+{% block body %}
+<body>
+    <h1>The Result</h1>
+    <table>
+        {% for key, value in result.items() %}
+        <tr>
+            <th>
+                {{ key }}
+            </th>
+            <td>
+                {{ value }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}
