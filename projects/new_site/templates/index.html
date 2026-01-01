@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+   <head>
+      <title>TCW!</title>
+   </head>
+{% endblock %}
+{% block body %}
+   <body>
+       <p></p>
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+               <div class="flash {{ category }}">
+                   {{ message }}
+               </div>
+               {% endfor %}
+         {% endif %}
+      {% endwith %}
+
+      <h1>The Coolest Website!</h1>
+
+       <div><label>Do you want to <a href = "http://localhost:5000/2login">log in?</a></label></div>
+
+   </body>
+{% endblock %}

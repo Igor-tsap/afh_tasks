@@ -6,6 +6,13 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "PirataOne";
+  src: url("../fonts/PirataOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "RobotoMono";
   src: url("../fonts/RobotoMono-VariableFont_wght.ttf") format("truetype");
   font-weight: normal;
@@ -17,22 +24,97 @@
 body {
     display: grid;
     margin: 0 auto;
-    font-family: "UnifrakturMaguntia", serif;
+    font-family: "RobotoMono", sans-serif;
     text-align: center;
     place-items: center;
 
-    table {
-        border-collapse: collapse;
-        width: auto;
-        margin: 20px
-        border: 1px solid #A9a9a9;
-        padding: 4px 20px;
-        font-family: "RobotoMono", serif;
-    }
+}
 
-    th, td {
-        border: 1px solid #000000;
-        padding: 4px 20px;
-    }
+h1 {
+    font-family: "PirataOne", serif;
+    text-align: center;
+    place-items: center;
+}
 
+table {
+    border-collapse: collapse;
+    width: auto;
+    margin: 20px
+    border: 1px solid #A9a9a9;
+    padding: 4px 20px;
+    font-family: "RobotoMono", sans-serif;
+    text-align: left;
+    place-items: left;
+}
+
+th, td {
+    border: 1px solid #000000;
+    padding: 4px 20px;
+}
+
+a:link, a:visited {
+    font-weight: lighter;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+
+}
+
+a:hover {
+    border: 2px solid black;
+    padding: 4px 9px;
+    font-weight: bold;
+}
+
+
+
+.link-button {
+    background: none;
+    border: 1px solid black;
+    padding: 5px 10px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.link-button:hover,
+.link-button:focus{
+    border: 2px solid black;
+    padding: 4px 9px;
+    font-weight: bold;
+}
+
+.flash {
+    margin: 0px 0px;
+    color: white;
+    background-color: black;
+    font-weight: lighter;
+    padding: 0;
+    font-size: 1rem;
+
+    animation: fadeOut 4s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    max-height: 100px;
+  }
+  70% {
+    opacity: 1;
+    max-height: 100px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    margin: 0 ;
+    padding: 0;
+  }
 }
