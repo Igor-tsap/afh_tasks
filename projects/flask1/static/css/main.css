@@ -80,8 +80,8 @@ th, td {
     padding: 4px 20px;
 }
 
-a:link, a:visited {
-    font-weight: lighter;
+a {
+
     background-color: none;
     color: #020AA2;
     border: None;
@@ -120,13 +120,14 @@ a:hover {
 }
 
 .flash {
-    margin: 0px 0px;
-    color: white;
+    margin: 10px 0px;
+    color: #EDD1DD;
     background-color: #020AA2;
     font-weight: lighter;
     padding: 0;
     font-size: 0.8rem;
 
+    overflow: hidden;
     animation: fadeOut 4s ease forwards;
 }
 
@@ -134,16 +135,20 @@ a:hover {
   0% {
     opacity: 1;
     max-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   70% {
     opacity: 1;
     max-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   100% {
     opacity: 0;
-    max-height: 0;
-    margin: 0 ;
-    padding: 0;
+    max-height: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
@@ -192,6 +197,7 @@ a.img-link img:hover {
     border: 2px #020AA2;
 }
 
+
 input[type="text"] {
     border: 1px solid #020AA2;
     border-radius: 0;
@@ -204,4 +210,42 @@ input[type="text"] {
     width: 300px
 }
 
+select {
+    border: 1px solid #020AA2;
+    border-radius: 0;
+    padding: 4px 10px;
+
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #EDD1DD;;
+    color: #020AA2;
+
+    outline: none;
+    box-sizing: border-box;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #020AA2 50%),
+        linear-gradient(135deg, #020AA2 50%, transparent 50%);
+    background-position:
+        calc(100% - 15px) calc(50% - 3px),
+        calc(100% - 10px) calc(50% - 3px);
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+
+    padding-right: 30px;
+}
+
+select:focus {
+    border-color: #000EC2;
+}
 

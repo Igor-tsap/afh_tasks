@@ -5,16 +5,27 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">Task Master</h1>
+
+    <div class="title">
+        <h1 style="text-align: center"><a href = "{{ url_for('index') }}">Task Master</a></h1>
+    </div>
+    {%- for message in get_flashed_messages() %}
+            <div class="flash {{ category }}">
+                {{ message }}
+            </div>
+        {%- endfor %}
     {% if tasks|length < 1 %}
     <h4 style="text-align: center">There are no tasks. Create one below</h4>
 
     {% else %}
-    <table style="marin: 20px; border: None;">
+
+
+
+    <table style="marin-top: 20px; border: None;">
         <tr>
             <th style="border: None; padding: 0"> </th>
             <th style="text-align: center;">Task</th>
+            <th style="text-align: center;">Priority</th>
             <th style="text-align: center;">Added</th>
 <!--            <th>Actions</th>-->
 
@@ -27,9 +38,22 @@
                 <td style="border: None; padding: 4px;">
                     <a href="/delete/{{task.id}}">x</a>
                 </td>
+
                 <td>
                     <a href="/update/{{task.id}}">{{ task.content }}</a>
                     </td>
+                <td>
+                    <a href="/update/{{task.id}}">
+                    {% if task.priority == 1 %}
+                    High
+                    {% elif task.priority == 2 %}
+                    Regular
+                    {% else %}
+                    Low
+                    {% endif %}
+<!--                    {{ task.priority }}-->
+                        </a>
+                </td>
                 <td>{{ task.date_created.strftime("%d/%m/%Y") }}</td>
 
             </tr>
@@ -37,14 +61,30 @@
     </table>
     {% endif %}
 
+
+<!--    <form action="/" method="POST">-->
+<!--        <div class="row" style="margin-top: 40px;">-->
+<!--            <input type="text" name="content" id="content">-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <input type="submit" value="Add Task">&ndash;&gt;-->
+<!--        <div class="row actions">-->
+<!--            <button type="submit" class="link-button">Add Task</button>-->
+<!--        </div>-->
+<!--    </form>-->
     <form action="/" method="POST">
         <div class="row" style="margin-top: 40px;">
-            <input type="text" name="content" id="content">
-        </div>
-<!--        <input type="submit" value="Add Task">-->
-        <div class="row actions">
+    <input type="text" name="content" placeholder="new task">
+
+    <select name="priority">
+
+        <option value="1">High</option>
+        <option value="2" selected>Regular</option>
+        <option value="3">Low</option>
+    </select>
+            </div>
+    <div class="row actions">
             <button type="submit" class="link-button">Add Task</button>
         </div>
-    </form>
-</div>
+</form>
+
 {% endblock %}
