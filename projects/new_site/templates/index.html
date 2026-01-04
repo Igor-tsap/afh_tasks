@@ -3,12 +3,18 @@
 {% block head %}
    <head>
       <title>TCW!</title>
+
    </head>
 {% endblock %}
 {% block body %}
    <body>
+    <header>
+        <h1>The Coolest Website!</h1>
+        <a href="/2login" class="login-link">log in</a>
+    </header>
        <p></p>
-      {% with messages = get_flashed_messages() %}
+
+    {% with messages = get_flashed_messages() %}
          {% if messages %}
                {% for message in messages %}
                <div class="flash {{ category }}">
@@ -16,11 +22,19 @@
                </div>
                {% endfor %}
          {% endif %}
-      {% endwith %}
+    {% endwith %}
 
-      <h1>The Coolest Website!</h1>
+        <a href="{{ url_for('show_post') }}" class="img-link">
+        <img src="{{ url_for('static', filename ='uploads/bae4e501203b3ad05359e75cf6d6a744.jpg') }}" alt="image" style="width: 500px">
+        </a>
+<!--       <div><p></p><label>Do you want to <a href = "http://localhost:5000/2login">log in?</a></p></label></div>-->
+<!--        <p><a href="{{ url_for('show_post') }}" >post</a></p>-->
 
-       <div><label>Do you want to <a href = "http://localhost:5000/2login">log in?</a></label></div>
+        <p><a href="{{ url_for('addrec') }}" >Add New Record</a></p>
+        <p><a href="{{ url_for('list') }}" >Show list</a></p>
+
+        <p><a href="{{ url_for('new') }}" >Add New </a></p>
+        <p><a href="{{ url_for('show_all') }}" >Show thelist</a></p>
 
    </body>
 {% endblock %}

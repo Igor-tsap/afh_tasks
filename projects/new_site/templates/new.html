@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+<head>
+    <title>the list</title>
+
+</head>
+{% endblock %}
+{% block body %}
+   <body>
+      <h1>Add Student</h1>
+<!--      <hr/>-->
+
+<!--      {%- for category, message in get_flashed_messages(with_categories = true) %}-->
+<!--         <div class = "alert alert-danger">-->
+<!--            {{ message }}-->
+<!--         </div>-->
+<!--      {%- endfor %}-->
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+           {% for message in messages %}
+                <div class="flash {{ category }}">
+                    {{ message }}
+                </div>
+           {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+      <form action = "{{ request.path }}" method = "post">
+          <br>
+          <label for="name">Name</label><br>
+          <input type="text" id="name" name="name" placeholder="Name"><br><br>
+
+          <label for="city">City</label><br>
+          <input type="text" id="city" name="city" placeholder="City"><br><br>
+
+          <label for="addr">Address</label><br>
+          <textarea id="addr" name="addr" placeholder="Address" style="width: 190px"></textarea><br><br>
+
+          <label for="pin">PIN</label><br>
+          <input type="text" id="pin" name="pin" placeholder="PIN"><br>
+
+          <div class="row actions">
+            <button type="submit" class="link-button">Submit</button>
+        </div>
+
+      </form>
+   </body>
+{% endblock %}

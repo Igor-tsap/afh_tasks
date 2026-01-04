@@ -11,30 +11,40 @@
     <h4 style="text-align: center">There are no tasks. Create one below</h4>
 
     {% else %}
-    <table>
+    <table style="marin: 20px; border: None;">
         <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
+            <th style="border: None; padding: 0"> </th>
+            <th style="text-align: center;">Task</th>
+            <th style="text-align: center;">Added</th>
+<!--            <th>Actions</th>-->
 
         </tr>
         {% for task in tasks %}
             <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
+<!--                <td style="border: None">-->
+<!--                    <a href="/update/{{task.id}}">Upd</a>-->
+<!--                </td>-->
+                <td style="border: None; padding: 4px;">
+                    <a href="/delete/{{task.id}}">x</a>
                 </td>
+                <td>
+                    <a href="/update/{{task.id}}">{{ task.content }}</a>
+                    </td>
+                <td>{{ task.date_created.strftime("%d/%m/%Y") }}</td>
+
             </tr>
         {% endfor %}
     </table>
     {% endif %}
 
     <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
+        <div class="row" style="margin-top: 40px;">
+            <input type="text" name="content" id="content">
+        </div>
+<!--        <input type="submit" value="Add Task">-->
+        <div class="row actions">
+            <button type="submit" class="link-button">Add Task</button>
+        </div>
     </form>
 </div>
 {% endblock %}

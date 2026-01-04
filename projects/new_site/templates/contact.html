@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block head %}
+<head>
+    <title>contact</title>
+</head>
+{% endblock %}
+{% block body %}
+   <body>
+      <h1 style = "text-align: center;">Contact Form</h1>
+
+      {% for message in form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      {% for message in form.email.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+      <div style="width: 360px; margin: 0 auto;">
+      <form action = "http://localhost:5000/contact" method = post>
+         <fieldset>
+<!--            <legend></legend>-->
+            {{ form.hidden_tag() }}
+
+            <div style="padding: 10px">
+               {{ form.name.label }}<br>
+               {{ form.name }}
+               <br><br>
+
+               {{ form.Gender.label }} {{ form.Gender }}
+                <br>
+
+               {{ form.Address.label }}<br>
+
+               {{ form.Address }}
+               <br><br>
+
+               {{ form.email.label }}<br>
+               {{ form.email }}
+               <br><br>
+
+               {{ form.Age.label }}<br>
+               {{ form.Age }}
+               <br><br>
+
+               {{ form.language.label }}<br>
+               {{ form.language }}
+               <br><br>
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+      </div>
+   </body>
+{% endblock %}

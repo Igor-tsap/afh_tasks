@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+<head>
+    <title>result</title>
+
+</head>
+{% endblock %}
+{% block body %}
+<body>
+      <table style="border: 1; margin: 0 auto; margin-top: 30px; margin-bottom: 30px; width: 500px;">
+         <thead>
+            <td><h1>Name</h1></td>
+            <td><h1>Address</h1></td>
+            <td><h1>City</h1></td>
+            <td><h1>Pincode</h1></td>
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row["name"]}}</td>
+               <td>{{row["addr"]}}</td>
+               <td> {{row["city"]}}</td>
+               <td>{{row['pin']}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+
+      <a href = "/">Go back to home page</a>
+   </body>
+{% endblock %}
