@@ -9,15 +9,6 @@
     <div class="title">
         <h1 style="text-align: center"><a href = "{{ url_for('index') }}">Task Master</a></h1>
     </div>
-        <!--    <h4 style="text-align: center">Update Task</h4>-->
-
-<!--    <form action="/update/{{task.id}}" method="POST">-->
-<!--        <input type="text" name="content" id="content" value="{{ task.content }}">-->
-
-<!--&lt;!&ndash;        <input type="submit" value="Update">&ndash;&gt;-->
-<!--        <div class="row actions">-->
-<!--            <button type="submit" class="link-button">Update</button>-->
-<!--        </div>-->
     </form>
         <form action="/update/{{task.id}}" method="POST">
         <div class="row" style="margin-top: 40px;">
@@ -34,14 +25,5 @@
             <button type="submit" class="link-button">Update</button>
         </div>
 </form>
-<!--    <form action="/delete/{{task.id}}" method="POST">-->
-<!--        <div class="row actions">-->
-<!--            <button type="submit" class="link-button">Delete</button>-->
-<!--        </div>-->
-<!--    </form>-->
-
-
-
-
 </div>
 {% endblock %}

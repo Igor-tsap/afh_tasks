@@ -27,14 +27,10 @@
             <th style="text-align: center;">Task</th>
             <th style="text-align: center;">Priority</th>
             <th style="text-align: center;">Added</th>
-<!--            <th>Actions</th>-->
-
         </tr>
         {% for task in tasks %}
             <tr>
-<!--                <td style="border: None">-->
-<!--                    <a href="/update/{{task.id}}">Upd</a>-->
-<!--                </td>-->
+
                 <td style="border: None; padding: 4px;">
                     <a href="/delete/{{task.id}}">x</a>
                 </td>
@@ -51,8 +47,7 @@
                     {% else %}
                     Low
                     {% endif %}
-<!--                    {{ task.priority }}-->
-                        </a>
+                    </a>
                 </td>
                 <td>{{ task.date_created.strftime("%d/%m/%Y") }}</td>
 
@@ -60,17 +55,6 @@
         {% endfor %}
     </table>
     {% endif %}
-
-
-<!--    <form action="/" method="POST">-->
-<!--        <div class="row" style="margin-top: 40px;">-->
-<!--            <input type="text" name="content" id="content">-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <input type="submit" value="Add Task">&ndash;&gt;-->
-<!--        <div class="row actions">-->
-<!--            <button type="submit" class="link-button">Add Task</button>-->
-<!--        </div>-->
-<!--    </form>-->
     <form action="/" method="POST">
         <div class="row" style="margin-top: 40px;">
     <input type="text" name="content" placeholder="new task">
@@ -82,6 +66,7 @@
         <option value="3">Low</option>
     </select>
             </div>
+
     <div class="row actions">
             <button type="submit" class="link-button">Add Task</button>
         </div>
