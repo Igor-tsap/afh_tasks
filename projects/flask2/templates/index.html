@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Cool Guys Club</title>
+{% endblock %}
+
+{% block body %}
+<h1>Cool Guys Club</h1>
+
+<div class="box">
+<table>
+    {% for key,value in my_dict.items(): %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+
+
+{% endblock %}

@@ -13,11 +13,6 @@ app.secret_key = "123"
 migrate = Migrate(app, db)
 
 
-
-PRIORITY_HIGH = 1
-PRIORITY_REGULAR = 2
-PRIORITY_LOW = 3
-
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     priority = db.Column(db.Integer, db.CheckConstraint("priority IN (1, 2, 3)"), nullable=False, default=2)
