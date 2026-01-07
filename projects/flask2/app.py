@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 def index():
     my_list = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10]
     my_dict = {

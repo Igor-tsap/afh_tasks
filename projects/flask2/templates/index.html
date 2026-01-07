@@ -5,11 +5,16 @@
 {% endblock %}
 
 {% block body %}
-<h1>Cool Guys Club</h1>
+<header>
+    <h1>Cool Guys Club</h1>
+    {% for number in my_list %}
+    <a href="/{{ number }}>">{{ number }}</a>
+    {% endfor %}
+</header>
 
 <div class="box">
 <table>
-    {% for key,value in my_dict.items(): %}
+    {% for key,value in my_dict.items() %}
     <tr>
         <td>{{ key }}</td>
         <td>{{ value }}</td>
