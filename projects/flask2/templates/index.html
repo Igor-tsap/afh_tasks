@@ -8,7 +8,7 @@
 <header>
     <h1>Cool Guys Club</h1>
     {% for number in my_list %}
-    <a href="/{{ number }}>">{{ number }}</a>
+    <a href="/{{ number }}">{{ number }}</a>
     {% endfor %}
 </header>
 
@@ -21,6 +21,12 @@
     </tr>
     {% endfor %}
 </table>
+    <form action="/" method="POST">
+        <div class = "row">
+            <input style="" type="text" name="adj" placeholder="adjective"><input type="text" name="name" placeholder="name">
+        </div>
+        <button type="submit" class="link-button">Add row</button>
+    </form>
 </div>
 
 
