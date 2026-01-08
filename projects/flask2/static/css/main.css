@@ -28,24 +28,44 @@
   font-display: swap;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+
+@font-face {
+  font-family: "font1";
+  src: url("../fonts/font-copy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 
-body {
+*, *::before, *::after {
+    box-sizing: border-box;
 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "font1", sans-serif;
+  font-weight: 400;
+  text-decoration-line: underline;
+
+}
+
+body {
+    font-size: 1rem;
     margin: 0;
     font-family: "RobotoMono", sans-serif;
     text-align: center;
     place-items: center;
-    background-color: #99D1DE;
-    color: #161E54;
+    background-color: white;
+    color: black;
 
 }
 
 header {
-    background-color: ;
+    letter-spacing: em;
+    font-size: 1rem;
+    font-family: "RobotoMono", sans-serif;
+    background-color: #C2E9E9;
     position: relative;
     width: 100%;
     padding: 12px 20px;
@@ -53,10 +73,13 @@ header {
 }
 
 header h1 {
+    font-size: 4rem;
+    font-weight: regular;
+    font-style: italic;
+    letter-spacing: 0.1em;
     margin: 0;
     text-align: center;
-    font-family: "BezierSans", sans-serif;
-
+    font-family: "font1", sans-serif;
 }
 
 .login-link {
@@ -69,7 +92,7 @@ header h1 {
 }
 
 h1 {
-    font-family: "BezierSans", sans-serif;
+    font-family: "font1", sans-serif;
     text-align: center;
     place-items: center;
 
@@ -81,24 +104,25 @@ table {
     border-collapse: collapse;
     width: 400px;
     margin: 10px auto;
-    border: 0px solid #161E54;
+    border: 0px solid black;
     padding: 4px 10px;
     font-family: "RobotoMono", sans-serif;
     text-align: left;
+    text
     place-items: left;
 }
 
 th, td {
-    border: 1px solid #161E54;
+    border: 1px solid black;
     padding: 4px 20px;
 }
 
 a {
 
     background-color: none;
-    color: #161E54;
+    color: black;
     border: None;
-    padding: 0px 1px;
+    padding: 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -109,16 +133,17 @@ a {
 a:hover {
     border: None;
     padding: 0px 0px;
-    font-weight: bold;
+    font-weight: bold ;
+    text-decoration: ;
 }
 
 
 
 .link-button {
-    background: #FF986A;
-    border: 0 solid #161E54;
+    background: black;
+    border: 0 solid black;
     padding: 2px 10px;
-    color: #161E54;
+    color: white;
     text-decoration: none;
     cursor: pointer;
     font: inherit;
@@ -127,16 +152,23 @@ a:hover {
 
 .link-button:hover,
 .link-button:focus{
-    background: #FA891A;
-    border: 0px solid #161E54;
+    background: black;
+    border: 0px solid black;
     padding: ;
-    font-weight: ;
+    font-weight: bold;
 }
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0;
+  text-decoration-skip-ink: none;
+}
+
 
 .flash {
     margin: 10px 0px;
     color: #99D1DE;
-    background-color: #161E54;
+    background-color: black;
     font-weight: lighter;
     padding: 0;
     font-size: 0.8rem;
@@ -198,7 +230,7 @@ a:hover {
 
 a.img-link {
     display: inline-block;
-    border: 1px #161E54;
+    border: 1px black;
     background: none;
     padding: 0;
     text-decoration: none;
@@ -215,32 +247,32 @@ a.img-link img {
 
 
 a.img-link img:hover {
-    border: 2px #161E54;
+    border: 2px black;
 }
 
 
 input[type="text"] {
-    border: 1px solid #161E54;
+    border: 1px solid black;
     border-radius: 0;
     padding: 4px 10px;
     font-size: 1em;
     font-family: inherit;
     background-color: white;
-    color: #161E54;
+    color: black;
     outline: none;
     width: 200px;
     margin: 10px 0;
 }
 
 select {
-    border: 1px solid #161E54;
+    border: 1px solid black;
     border-radius: 0;
     padding: 4px 10px;
 
     font-size: 1em;
     font-family: inherit;
     background-color: #99D1DE;
-    color: #161E54;
+    color: black;
 
     outline: none;
     box-sizing: border-box;
@@ -254,8 +286,8 @@ select {
 
 select {
     background-image:
-        linear-gradient(45deg, transparent 50%, #161E54 50%),
-        linear-gradient(135deg, #161E54 50%, transparent 50%);
+        linear-gradient(45deg, transparent 50%, black 50%),
+        linear-gradient(135deg, black 50%, transparent 50%);
     background-position:
         calc(100% - 15px) calc(50% - 3px),
         calc(100% - 10px) calc(50% - 3px);

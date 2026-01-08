@@ -6,10 +6,17 @@
 
 {% block body %}
 <header>
-    <h1>Cool Guys Club</h1>
+    <div class="underline">
+        <a href="/">
+        <h1> Cool guys club</h1>
+        </a>
+    </div>
+
+
     {% for number in my_list %}
-    <a href="/{{ number }}">{{ number }}</a>
+    <a href="/{{ number }}">  {{ number }}  </a>
     {% endfor %}
+
 </header>
 
 <div class="box">
