@@ -6,6 +6,11 @@
 
 {% block body %}
 
+{%- for message in get_flashed_messages() %}
+    <div class="flash {{ category }}">
+        {{ message }}
+    </div>
+{%- endfor %}
 
 <div class="box">
 <table>
@@ -20,7 +25,7 @@
         <div class = "row">
             <input style="" type="text" name="adj" placeholder="adjective"><input type="text" name="name" placeholder="name">
         </div>
-        <button type="submit" class="link-button">Add row</button>
+        <button type="submit" class="link-button">Add Row</button>
     </form>
 </div>
 

@@ -106,7 +106,7 @@ header  {
     letter-spacing: 0.1em;
 
 
-    line-height: 0.95; /* controls text-to-line distance */
+    line-height: 0.95;
 
     text-align: center;
 
@@ -201,8 +201,8 @@ a:hover {
 
 
 .flash {
-    margin: 10px 0px;
-    color: #99D1DE;
+    margin: 0px 0px;
+    color: white;
     background-color: black;
     font-weight: lighter;
     padding: 0;

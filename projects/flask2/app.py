@@ -5,7 +5,7 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 app.secret_key = "456"
 
-my_list = list(range(1, 11))
+my_list = list(range(1, 4))
 
 my_dict = {
     "dreamlike": "Dale",
@@ -39,6 +39,7 @@ def index():
 
 @app.route("/numbers/<int:number>")
 def number_page(number):
+    flash(f"What I can say about number {number}")
     return render_template("number_page.html", num=number, my_list=my_list)
 
 if __name__ == "__main__":
