@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.secret_key = "456"
 
 my_list = list(range(1, 11))
+
 my_dict = {
     "dreamlike": "Dale",
     "uncanny": "Laura",
@@ -18,7 +19,6 @@ my_dict = {
     "fragmented": "Alvin",
     "subconscious": "Gordon"
 }
-
 
 @app.route("/", methods = [ "POST", "GET",])
 def index():
@@ -37,6 +37,9 @@ def index():
         return render_template("index.html", my_list=my_list, my_dict=my_dict)
 
 
+@app.route("/numbers/<int:number>")
+def number_page(number):
+    return render_template("number_page.html", num=number, my_list=my_list)
 
 if __name__ == "__main__":
     app.run(debug=True)

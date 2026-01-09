@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     {% block head %}{% endblock %}
 </head>
+
 <body>
+<header>
+    <img src="{{ url_for('static', filename='basket-02.png') }}" style="margin-bottom: -17px;">
+</header>
+
+<div class="sticky-bar">
+    <h1 class="boxed-title">
+        <a href="/">Co0l guys cluB</a>
+    </h1>
+
+    {% for digit in my_list %}
+        <a href="{{ url_for('number_page', number=digit) }}">
+            {{ digit }}
+        </a>
+    {% endfor %}
+
+</div>
     {% block body %}{% endblock %}
 </body>
 </html>
