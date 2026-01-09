@@ -32,10 +32,17 @@
 @font-face {
   font-family: "font1";
   src: url("../fonts/font-copy1.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
-  font-display: swap;
 }
+
+@font-face {
+  font-family: "font1";
+  src: url("../fonts/font-copy1.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
 
 
 *, *::before, *::after {
@@ -47,18 +54,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "font1", sans-serif;
   font-weight: 400;
   text-decoration-line: underline;
+  font-synthesis: style;
 
 }
 
-body {
+body, html{
     font-size: 1rem;
     margin: 0;
     font-family: "RobotoMono", sans-serif;
     text-align: center;
-    place-items: center;
+
     background-color: white;
     color: black;
-
+    overflow-x: visible;
+    overflow-y: visible;
 }
 
 header {
@@ -66,41 +75,46 @@ header {
     font-size: 1rem;
     font-family: "RobotoMono", sans-serif;
     background-color: #C2E9E9;
-    position: relative;
+
     width: 100%;
     padding: 12px 20px;
     justify-self: stretch;
 }
 
-header h1 {
-    font-size: 4rem;
-    font-weight: regular;
-    font-style: italic;
-    letter-spacing: 0.1em;
-    margin: 0;
-    text-align: center;
-    font-family: "font1", sans-serif;
+header  {
+
 }
+
+
+.sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #C2E9E9;
+}
+
 
 .boxed-title {
+    margin: 0;
+    padding: 0;
+
+    font-family: "font1", sans-serif;
     font-size: 4rem;
     font-weight: 400;
-
-  text-decoration: underline;
-  text-underline-offset: 0;
-  text-decoration-skip-ink: none;
-
-   border-top: 2px solid currentColor;
+    font-style: oblique;
+    letter-spacing: 0.1em;
 
 
+    line-height: 0.95; /* controls text-to-line distance */
 
-  line-height: 0.95;
+    text-align: center;
 
-  margin-bottom: 10px;
+    border-top: 2px solid currentColor;
 
 
 
 }
+
 
 .login-link {
     position: absolute;
