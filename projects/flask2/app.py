@@ -39,7 +39,7 @@ def index():
 
 @app.route("/numbers/<int:number>")
 def number_page(number):
-    flash(f"What I can say about number {number}")
+    # flash(f"What I can say about number {number}")
     return render_template("number_page.html", num=number, my_list=my_list)
 
 if __name__ == "__main__":
