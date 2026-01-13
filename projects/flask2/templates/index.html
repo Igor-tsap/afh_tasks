@@ -22,10 +22,17 @@
     {% endfor %}
 </table>
     <form action="/" method="POST">
-        <div class = "row">
-            <input style="" type="text" name="adj" placeholder="adjective"><input type="text" name="name" placeholder="name">
+        <div class = "">
+            <input style="" type="text" name="fname" placeholder="first name"><input type="text" name="sname" placeholder="second name">
         </div>
         <button type="submit" class="link-button">Submit</button>
+    </form>
+    <form action="/" method="POST">
+        <input type="hidden" name="fake_method" value="PUT">
+        <div class="">
+            <input style="" type="text" name="put_fname" placeholder="first name"><input type="text" name="put_sname" placeholder="second name">
+        </div>
+        <button type="submit" class="link-button">Replace All</button>
     </form>
 </div>
 

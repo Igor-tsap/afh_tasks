@@ -5,33 +5,48 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 app.secret_key = "456"
 
-my_list = list(range(1, 4))
+my_list = list(range(1, 14))
 
 my_dict = {
-    "dreamlike": "Dale",
-    "uncanny": "Laura",
-    "ominous": "Betty",
-    "disquieting": "Rita",
-    "surreal": "Henry",
-    "hypnotic": "Jeffrey",
-    "shadowed": "Frank",
-    "eerie": "Dorothy",
-    "fragmented": "Alvin",
-    "subconscious": "Gordon"
+    "Dale": "Cooper",
+    "Laura": "Palmer",
+    "Betty": "Elms",
+    "Rita": "Hayworth",
+    "Henry": "Spencer",
+    "Jeffrey": "Beaumont",
+    "Frank": "Booth",
+    "Dorothy": "Vallens",
+    "Alvin": "Straight",
+    "Gordon": "Cole"
 }
 
-@app.route("/", methods = [ "POST", "GET",])
+@app.route("/", methods = [ "POST", "GET" ])
 def index():
     if request.method == "POST":
-        new_adj = request.form.get("adj")
-        new_name = request.form.get("name")
+        fake_method = request.form.get("fake_method")
 
-        new_row = {new_adj: new_name}
+        if fake_method is None:
+            new_fname = request.form.get("fname")
+            new_sname = request.form.get("sname")
 
-        my_dict.update(new_row)
+            new_row = {new_fname: new_sname}
 
-        flash("row was successfully added")
-        return redirect(url_for("index"))
+            my_dict.update(new_row)
+
+            flash("row was successfully added")
+            return redirect(url_for("index"))
+
+        elif fake_method == "PUT":
+            rep_fname = request.form.get("put_fname")
+            rep_sname = request.form.get("put_sname")
+
+            rep_row = {rep_fname: rep_sname}
+
+            my_dict.clear()
+            my_dict.update(rep_row)
+
+            flash("table successfully replaced")
+            return redirect(url_for("index"))
 
     else:
         return render_template("index.html", my_list=my_list, my_dict=my_dict)
