@@ -5,7 +5,7 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 app.secret_key = "456"
 
-my_list = list(range(1, 14))
+my_list = list(range(1, 4))
 
 my_dict = {
     "Dale": "Cooper",

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+<header>
+    <img src="{{ url_for('static', filename='basket-04.png') }}" class="img-responsive" style="margin-bottom: -3px;">
+</header>
+
+<div class="sticky-bar">
+    <h1 class="boxed-title">
+        <a style="color: #F0E2C5;" href="{{ url_for('index') }}">W3IrD ANImALs</a>
+    </h1>
+
+
+    <a href="{{ url_for('data1') }}">1</a>
+    <a href="{{ url_for('data2') }}">2</a>
+    <a href="{{ url_for('data3') }}">3+</a>
+
+
+</div>
+{%- for message in get_flashed_messages() %}
+    <div class="flash {{ category }}">
+        {{ message }}
+    </div>
+{%- endfor %}
+{% block body %}
+
+{% endblock %}
+</body>
+
+</html>

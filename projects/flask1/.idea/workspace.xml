@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4bc2c6f-19b3-409d-80b3-b5315cce9541" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/test.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/test.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flask2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flask2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flask2/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../flask2/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flask2/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../flask2/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flask2/templates/number_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../flask2/templates/number_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flask2/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flask2/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
