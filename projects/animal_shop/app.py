@@ -52,6 +52,33 @@ def delete(id):
     flash(f"row {id} was successfully deleted")
     return redirect("/")
 
+@app.route("/update/<int:id>", methods = ["GET", "POST"])
+def update(id):
+    if request.method == "POST":
+        sql = "UPDATE animals SET name = %s, price = %s, quantity = %s WHERE id = %s"
+        val = (
+               request.form.get("name"),
+               request.form.get("price"),
+               request.form.get("quantity"),
+               id,
+               )
+
+        cursor.execute(sql, val)
+
+        db.commit()
+        flash(f"row {id} was successfully updated")
+
+        return redirect("/")
+
+    else:
+        sql = "SELECT * FROM animals WHERE id = %s"
+        val = (id,)
+
+        cursor.execute(sql, val)
+
+        row = cursor.fetchone()
+        return render_template("update.html", row=row)
+
 @app.route("/1")
 def data1():
     cursor.execute("select * from animals where quantity=1")

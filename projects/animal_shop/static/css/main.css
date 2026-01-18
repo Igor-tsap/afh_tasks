@@ -99,7 +99,6 @@ table {
     padding: 4px 10px;
     font-family: "RobotoMono", sans-serif;
     text-align: left;
-    text
     place-items: left;
 }
 
@@ -195,6 +194,9 @@ button {
   }
 }
 
+
+
+
 .form-box {
     display: flex;
     flex-wrap: wrap;          /* wrap on small screens */
@@ -204,18 +206,56 @@ button {
     margin: 0 auto;
 }
 
+
+
+.field {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: white;
+    color: black;
+    outline: none;
+    margin:-0.5px;
+    display: flex;
+
+    flex: 1 1 auto;           /* grow and shrink as needed */
+    min-width: 70px;
+    position: relative;
+}
+
+.field .label {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85em;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+
 .box{
     background-color: white;
     width: auto;
     padding: 0;
-    margin-top: 30px;
+    margin: 30px;
 }
 
 
 
 .row {
-    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 70px 50px;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: "RobotoMono", sans-serif;
 }
+
+
 
 .actions {
     margin: 20px;

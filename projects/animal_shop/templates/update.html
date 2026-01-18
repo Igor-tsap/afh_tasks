@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+    <form action="{{ url_for('update', id = row[0]) }}", method='POST'>
+        <div class=form-box>
+            <div class="field">
+                <input type="text" name="name" value="{{ row[1] }}">
+                <span class="label">name</span>
+            </div>
+            <div class="field">
+                <input  type="text" style="width: 70px;" name="price" value="{{ row[2] }}">
+                <span class="label">$</span>
+            </div>
+            <div class="field ">
+                <input type="text" style="width: 50px;" name="quantity" value="{{ row[3] }}">
+                <span class="label">q</span>
+            </div>
+        </div>
+        <button type="submit" class="link-button">Submit</button>
+    </form>
+
+{% endblock %}
+
