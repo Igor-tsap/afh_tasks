@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55eeb29c-b0fa-49dd-93c3-dff86585b000" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../animal_shop/templates/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../animal_shop/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../animal_shop/.idea/picture_shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/.idea/picture_shop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../animal_shop/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../animal_shop/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flask1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flask1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

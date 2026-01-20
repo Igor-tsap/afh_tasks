@@ -35,11 +35,30 @@ def index():
         return redirect(url_for("index"))
 
     else:
-        cursor.execute("select * from animals")
-        value = cursor.fetchall()
+        sort =  request.args.get("sort", "id")
+        order = request.args.get("order", "asc")
 
-        db.commit()
-        return render_template("index.html", data=value)
+        allowed_columns = {
+            "name": "name",
+            "price": "price",
+            "quantity": "quantity",
+            "id": "id"
+        }
+
+        allowed_order = {
+            "asc": "ASC",
+            "desc": "DESC"
+        }
+
+        sort_col = allowed_columns.get(sort, "id")
+        sort_order = allowed_order.get(order, "ASC")
+
+        sql = f"SELECT * FROM animals ORDER BY {sort_col} {sort_order}"
+
+        cursor.execute(sql)
+        data = cursor.fetchall()
+
+        return render_template("index.html", data=data, sort=sort, order=order)
 
 @app.route("/delete/<int:id>")
 def delete(id):
@@ -81,21 +100,21 @@ def update(id):
 
 @app.route("/1")
 def data1():
-    cursor.execute("select * from animals where quantity=1")
-    value = cursor.fetchall()
-    return render_template("data.html", data=value, quantity=1)
+    cursor.execute("SELECT * FROM animals WHERE quantity=1")
+    data = cursor.fetchall()
+    return render_template("data.html", data=data, quantity=1)
 
 @app.route("/2")
 def data2():
-    cursor.execute("select * from animals where quantity=2")
-    value = cursor.fetchall()
-    return render_template("data.html", data=value, quantity=2)
+    cursor.execute("SELECT * FROM animals WHERE quantity=2")
+    data = cursor.fetchall()
+    return render_template("data.html", data=data, quantity=2)
 
 @app.route("/3+")
 def data3():
-    cursor.execute("select * from animals where quantity>=3")
-    value = cursor.fetchall()
-    return render_template("data.html", data=value, quantity="3 or more")
+    cursor.execute("SELECT * FROM animals WHERE quantity>=3")
+    data = cursor.fetchall()
+    return render_template("data.html", data=data, quantity="3 or more")
 
 if __name__ == "__main__":
     app.run(debug=True)
