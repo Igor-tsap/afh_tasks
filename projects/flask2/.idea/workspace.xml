@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55eeb29c-b0fa-49dd-93c3-dff86585b000" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../animal_shop/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../animal_shop/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../animal_shop/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="55eeb29c-b0fa-49dd-93c3-dff86585b000" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
