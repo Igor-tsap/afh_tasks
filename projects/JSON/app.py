@@ -3,10 +3,10 @@ import mysql.connector
 
 config = {
     'user': 'root',
-    'password': 'root',
+    'password': 'aKp1haay2iEs394W',
     'host': 'localhost',
     "port": 8889,
-    'database': '1stdb',
+    'database': '2nd',
     'raise_on_warnings': True,
 }
 
@@ -36,7 +36,7 @@ def index():
             return jsonify({"message": "Animal added"}), 201
 
         else:
-            cursor.execute("SELECT * FROM animals ORDER by id")
+            cursor.execute("SELECT * FROM animals ORDER BY id")
             data = cursor.fetchall()
 
         return jsonify(data), 200
