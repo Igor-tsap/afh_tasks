@@ -1,41 +1,99 @@
 from flask import Flask, jsonify, request
-import requests
+import mysql.connector
+
+config = {
+    'user': 'root',
+    'password': 'root',
+    'host': 'localhost',
+    "port": 8889,
+    'database': '1stdb',
+    'raise_on_warnings': True,
+}
+
+db = mysql.connector.connect(**config)
+
 
 app = Flask(__name__)
+app.secret_key = "68464"
 
-URL = "https://6972638632c6bacb12c6c80b.mockapi.io/animals"
 
-
-@app.route("/", methods=["GET", "POST"])
+@app.route("/animals", methods=["GET", "POST"])
 def index():
-    if request.method == "GET":
-        response = requests.get(URL)
-        return jsonify(response.json()), response.status_code
+    cursor = db.cursor(dictionary=True)
 
-    if request.method == "POST":
-        u_input = request.get_json()
-        response = requests.post(URL, json=u_input)
-        return jsonify(response.json()), response.status_code
+    try:
+        if request.method == "POST":
+            data = request.get_json(silent=True) or {}
+            name = data.get("name")
+            price = data.get("price")
+            quantity = data.get("quantity")
 
-@app.route("/posts/<int:id>", methods=["GET", "PUT", "PATCH", "DELETE"])
+            sql = "INSERT INTO animals (name, price, quantity) VALUES (%s, %s, %s)"
+
+            cursor.execute(sql, (name, price, quantity))
+            db.commit()
+
+            return jsonify({"message": "Animal added"}), 201
+
+        else:
+            cursor.execute("SELECT * FROM animals ORDER by id")
+            data = cursor.fetchall()
+
+        return jsonify(data), 200
+
+    finally:
+        cursor.close()
+
+
+@app.route("/animals/<int:id>", methods=["GET", "PUT", "PATCH", "DELETE"])
 def the_object(id):
-    if request.method == "GET":
-        response = requests.get(f"{URL}/{id}")
-        return jsonify(response.json()), response.status_code
+    cursor = db.cursor(dictionary=True)
 
-    if request.method == "PUT":
-        u_input = request.get_json()
-        response = requests.put(f"{URL}/{id}", json=u_input)
-        return jsonify(response.json()), response.status_code
+    try:
+        if request.method == "GET":
+            cursor.execute("SELECT * FROM animals WHERE id = %s", (id,))
 
-    if request.method == "PATCH":
-        u_input = request.get_json()
-        response = requests.patch(f"{URL}/{id}", json=u_input)
-        return jsonify(response.json()), response.status_code
+            data = cursor.fetchone()
 
-    if request.method == "DELETE":
-        response = requests.delete(f"{URL}/{id}")
-        return jsonify({"deleted": True}), response.status_code
+            return jsonify(data), 200
+
+        if request.method == "PUT":
+            data = request.get_json(silent=True) or {}
+            name = data.get("name")
+            price = data.get("price")
+            quantity = data.get("quantity")
+
+            sql = "UPDATE animals SET name = %s, price = %s, quantity = %s WHERE id = %s"
+
+            cursor.execute(sql, (name, price, quantity, id))
+            db.commit()
+
+            return jsonify({"message": "data updated"}), 200
+
+        # if request.method == "PATCH": #needs change
+        #     data = request.get_json(silent=True) or {}
+        #     name = data.get("name")
+        #     price = data.get("price")
+        #     quantity = data.get("quantity")
+        #
+        #     sql = "UPDATE animals SET name = %s, price = %s, quantity = %s WHERE id = %s"
+        #
+        #     cursor.execute(sql, (name, price, quantity, id))
+        #     db.commit()
+        #
+        #     return jsonify({"message": "data updated"}), 200
+
+        if request.method == "DELETE":
+            sql = "DELETE FROM animals WHERE id = %s"
+
+            cursor.execute(sql, (id,))
+            db.commit()
+
+            return jsonify({"message":"data deleted"}), 200
+
+    finally:
+        cursor.close()
+
 
 
 if __name__ == "__main__":
