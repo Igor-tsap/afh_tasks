@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import mysql.connector
+from flask_cors import CORS
 
 config = {
     'user': 'root',
@@ -14,10 +15,11 @@ db = mysql.connector.connect(**config)
 
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "68464"
 
 
-@app.route("/animals", methods=["GET", "POST"])
+@app.route("/api/animals", methods=["GET", "POST"])
 def index():
     cursor = db.cursor(dictionary=True)
 
@@ -27,25 +29,26 @@ def index():
             name = data.get("name")
             price = data.get("price")
             quantity = data.get("quantity")
+            img = data.get("img")
 
-            sql = "INSERT INTO animals (name, price, quantity) VALUES (%s, %s, %s)"
+            sql = "INSERT INTO animals (name, price, quantity, img) VALUES (%s, %s, %s, %s)"
 
-            cursor.execute(sql, (name, price, quantity))
+            cursor.execute(sql, (name, price, quantity, img))
             db.commit()
 
             return jsonify({"message": "Animal added"}), 201
 
-        else:
+        if request.method == "GET":
             cursor.execute("SELECT * FROM animals ORDER BY id")
             data = cursor.fetchall()
 
-        return jsonify(data), 200
+            return jsonify(data), 200
 
     finally:
         cursor.close()
 
 
-@app.route("/animals/<int:id>", methods=["GET", "PUT", "PATCH", "DELETE"])
+@app.route("/api/animals/<int:id>", methods=["GET", "PUT", "PATCH", "DELETE"])
 def the_object(id):
     cursor = db.cursor(dictionary=True)
 
@@ -62,10 +65,11 @@ def the_object(id):
             name = data.get("name")
             price = data.get("price")
             quantity = data.get("quantity")
+            img = data.get("img")
 
-            sql = "UPDATE animals SET name = %s, price = %s, quantity = %s WHERE id = %s"
+            sql = "UPDATE animals SET name = %s, price = %s, quantity = %s, img = %s WHERE id = %s"
 
-            cursor.execute(sql, (name, price, quantity, id))
+            cursor.execute(sql, (name, price, quantity, img, id))
             db.commit()
 
             return jsonify({"message": "data updated"}), 200
