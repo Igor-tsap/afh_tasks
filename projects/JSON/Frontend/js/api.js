@@ -1,4 +1,3 @@
-// frontend/js/api.js
 console.log("api.js loaded");
 
 const API_BASE_URL = "http://localhost:5000/api";

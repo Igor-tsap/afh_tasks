@@ -28,17 +28,7 @@ p {
     margin: 5px;
 }
 
-@media (max-width: 1200px) {
-    .animal-list { column-count: 3; }
-}
 
-@media (max-width: 800px) {
-    .animal-list { column-count: 2; }
-}
-
-@media (max-width: 500px) {
-    .animal-list { column-count: 1; }
-}
 
 
 
@@ -47,14 +37,16 @@ p {
     column-width: 260px;    /* FIXED card width */
     column-gap: 16px;
     padding: 16px;
+    min-width: 320px;
 }
 
 
 
 /* === Individual animal card === */
 .animal-card {
-    display: inline-block;      /* REQUIRED */
-    width: 100%;                /* fills column width */
+    display: block;        /* ← THIS IS THE FIX */
+    width: auto;
+    max-width: 100%;
     margin-bottom: 16px;        /* vertical spacing */
 
     background-color: #fff;
@@ -104,11 +96,18 @@ p {
     color: white;
 }
 
+.edit-btn:hover {
+    background-color: #299134;
+}
+
 .delete-btn {
     background-color: #f44336;
     color: white;
 }
 
+.delete-btn:hover {
+    background-color: #df2d27;
+}
 /* === Create form panel === */
 .form-panel {
     max-width: 400px;
@@ -156,3 +155,24 @@ p {
     margin-top: 8px;
     font-weight: 500;
 }
+
+/* FORCE 2 columns on small screens */
+@media (max-width: 900px) {
+    .animal-list {
+        column-count: 2 !important;
+        column-width: auto !important;
+    }
+
+    .animal-card {
+        width: auto;              /* THIS IS CRITICAL */
+        max-width: 100%;
+    }
+}
+
+/* FORCE 1 column on phones */
+@media (max-width: 500px) {
+    .animal-list {
+        column-count: 1 !important;
+    }
+}
+
