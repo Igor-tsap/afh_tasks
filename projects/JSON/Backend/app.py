@@ -60,19 +60,45 @@ def the_object(id):
 
             return jsonify(data), 200
 
-        if request.method == "PUT":
+        # if request.method == "PUT":
+        #     data = request.get_json(silent=True) or {}
+        #     name = data.get("name")
+        #     price = data.get("price")
+        #     quantity = data.get("quantity")
+        #     img = data.get("img")
+        #
+        #     sql = "UPDATE animals SET name = %s, price = %s, quantity = %s, img = %s WHERE id = %s"
+        #
+        #     cursor.execute(sql, (name, price, quantity, img, id))
+        #     data = cursor.fetchone()
+        #     db.commit()
+        #
+        #     return jsonify(data), 200
+
+        if request.method in ("PUT", "PATCH"):
             data = request.get_json(silent=True) or {}
-            name = data.get("name")
-            price = data.get("price")
-            quantity = data.get("quantity")
-            img = data.get("img")
 
-            sql = "UPDATE animals SET name = %s, price = %s, quantity = %s, img = %s WHERE id = %s"
+            fields = []
+            values = []
 
-            cursor.execute(sql, (name, price, quantity, img, id))
+            for key in ("name", "price", "quantity", "img"):
+                if key in data:
+                    fields.append(f"{key} = %s")
+                    values.append(data[key])
+
+            if not fields:
+                return jsonify({"error":"no fields to update"}), 400
+
+            values.append(id)
+
+            sql = f"UPDATE animals SET {", ".join(fields)} WHERE id = %s"
+
+            cursor.execute(sql, values)
             db.commit()
 
-            return jsonify({"message": "data updated"}), 200
+            cursor.execute("SELECT * FROM animals WHERE id = %s", (id,))
+            data = cursor.fetchone()
+            return jsonify(data), 200
 
         # if request.method == "PATCH": #needs change
         #     data = request.get_json(silent=True) or {}
