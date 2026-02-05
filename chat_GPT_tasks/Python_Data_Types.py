@@ -29,3 +29,17 @@
 # for element in mylist:
 #     print(type(element))
 #================================Task 3 end=========================================
+#================================Task 4 start=======================================
+# my_list = [2, 5, 56, 7, 2, 5, 31, 17, 18, 21]
+#
+# print(list(set(my_list)))
+#
+# new_list = []
+#
+# for item in my_list:
+#     if item not in new_list:
+#         new_list.append(item)
+#
+# print(new_list)
+#================================Task 4 end=========================================
+
