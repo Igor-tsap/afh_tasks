@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Animal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <a href="index.html">← Back to list</a>
+
+    <h1>Edit Animal</h1>
+
+    <section id="animal-form-section">
+        <p>Loading...</p>
+    </section>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", loadAnimal);
+
+        async function loadAnimal() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+
+            const container = document.getElementById("animal-form-section");
+
+            if (!id) {
+                container.textContent = "No animal ID provided.";
+                return;
+            }
+
+            try {
+                const animal = await getAnimal(id);
+
+                if (!animal) {
+                    container.textContent = "Animal not found.";
+                    return;
+                }
+
+                container.innerHTML = `
+                    <form id="edit-animal-form" class="form-panel">
+                        <label>
+                            Name
+                            <input type="text" name="name" value="${animal.name}" required>
+                        </label>
+
+                        <label>
+                            Price
+                            <input type="number" name="price" value="${animal.price}" required>
+                        </label>
+
+                        <label>
+                            Quantity
+                            <input type="number" name="quantity" value="${animal.quantity}" required>
+                        </label>
+
+                        <label>
+                            Image URL
+                            <input type="text" name="img" value="${animal.img || ''}" placeholder="images/placeholder.jpg">
+                        </label>
+
+                        <button type="submit">Save</button>
+                        <p id="status"></p>
+                    </form>
+                `;
+
+
+                const form = document.getElementById("edit-animal-form");
+                const imgInput = form.img;
+                const preview = document.createElement("img");
+
+                preview.style.width = "100%";
+                preview.style.maxHeight = "200px";
+                preview.style.objectFit = "cover";
+                preview.style.borderRadius = "6px";
+                preview.style.margin = "10px 0";
+
+                form.insertBefore(preview, form.querySelector("button"));
+
+                if (imgInput.value) preview.src = imgInput.value;
+
+                imgInput.addEventListener("input", () => {
+                    preview.src = imgInput.value;
+                });
+
+                const status = document.getElementById("status");
+
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+                    const data = {
+                        name: formData.get("name"),
+                        price: parseFloat(formData.get("price")),
+                        quantity: parseInt(formData.get("quantity")),
+                        img: formData.get("img")
+                    };
+
+                    try {
+                        await updateAnimal(id, data);
+                        window.location.href = "index.html";
+
+                    } catch (err) {
+                        status.textContent = "Error: " + err.message;
+                        status.style.color = "red";
+                    }
+                });
+
+            } catch (err) {
+                container.innerHTML = `<p class="error">Error: ${err.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

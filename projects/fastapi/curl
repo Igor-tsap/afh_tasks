@@ -1,0 +1,27 @@
+curl -X POST http://localhost:8000/api/animals \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "robot",
+    "price": 1000,
+    "quantity": 1
+  }'
+
+curl -X PUT http://localhost:5000/animals/7 \
+  -H "Content-Type: application/json" \
+  -d '{
+  "name": "Kakapo",
+  "price": 1000,
+  "quantity": 2
+}'
+
+
+curl -X DELETE http://localhost:5000/animals/26
+
+
+curl -X GET http://localhost:5000/api/animals \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "lion",
+    "price": 120,
+    "quantity": 3
+  }'

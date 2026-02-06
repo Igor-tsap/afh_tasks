@@ -1,0 +1,178 @@
+@font-face {
+    font-family: "RobotoMono";
+    src: url("../fonts/RobotoMono-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Apply main font */
+body, html {
+    font-family: "RobotoMono", sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "RobotoMono", sans-serif;
+    font-weight: 400;
+}
+
+p {
+    margin: 5px;
+}
+
+
+
+
+
+/* === Container for all animals === */
+.animal-list {
+    column-width: 260px;    /* FIXED card width */
+    column-gap: 16px;
+    padding: 16px;
+    min-width: 320px;
+}
+
+
+
+/* === Individual animal card === */
+.animal-card {
+    display: block;        /* ← THIS IS THE FIX */
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 16px;        /* vertical spacing */
+
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    break-inside: avoid;        /* prevent splitting */
+}
+
+
+
+.animal-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Images */
+.animal-card img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 8px 0;
+    display: block;
+}
+
+
+/* Buttons inside cards */
+.animal-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.animal-buttons button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #299134;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #df2d27;
+}
+/* === Create form panel === */
+.form-panel {
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+}
+
+.form-panel label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-panel input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-panel button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.form-panel button:hover {
+    background-color: #1976D2;
+}
+
+/* Status messages */
+#create-status {
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* FORCE 2 columns on small screens */
+@media (max-width: 900px) {
+    .animal-list {
+        column-count: 2 !important;
+        column-width: auto !important;
+    }
+
+    .animal-card {
+        width: auto;              /* THIS IS CRITICAL */
+        max-width: 100%;
+    }
+}
+
+/* FORCE 1 column on phones */
+@media (max-width: 500px) {
+    .animal-list {
+        column-count: 1 !important;
+    }
+}
+
