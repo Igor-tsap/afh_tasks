@@ -1,6 +1,6 @@
 console.log("api.js loaded");
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "http://localhost:8000/api";
 
 async function getAnimals() {
     const res = await fetch(`${API_BASE_URL}/animals`);

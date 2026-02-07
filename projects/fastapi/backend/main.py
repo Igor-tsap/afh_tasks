@@ -6,9 +6,9 @@ from pydantic import BaseModel
 
 
 class Animal(BaseModel):
-    name: str = None
-    price: float = None
-    quantity: int = None
+    name: str
+    price: float
+    quantity: int
     img: str = None
 
 
@@ -23,7 +23,7 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -66,12 +66,15 @@ def create(animal: Animal):
     cursor = None
     try:
         conn = get_connection()
-        cursor = conn.cursor(dictionary=True)
+        cursor = conn.cursor()
 
         sql = "INSERT INTO animals (name, price, quantity, img) VALUES (%s, %s, %s, %s)"
         cursor.execute(sql, (animal.name, animal.price, animal.quantity, animal.img))
         conn.commit()
 
+        cursor.close()
+
+        cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT * FROM animals WHERE id = %s", (cursor.lastrowid,))
         return cursor.fetchone()
 
@@ -87,15 +90,79 @@ def create(animal: Animal):
 
 @app.get("/api/animals/{id}")
 def the_object(id: int):
-    conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
+    conn = None
+    cursor = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("SELECT * FROM animals WHERE id = %s", (id,))
-    data = cursor.fetchone()
+        cursor.execute("SELECT * FROM animals WHERE id = %s", (id,))
+        return cursor.fetchone()
 
-    cursor.close()
-    conn.close()
+    except Error as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
-    return data
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+@app.put("/api/animals/{id}")
+def edit_the_object(id: int, animal: Animal):
+    conn = None
+    cursor = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        sql = "UPDATE animals SET name = %s, price = %s, quantity = %s, img = %s WHERE id = %s"
+        cursor.execute(sql, (animal.name, animal.price, animal.quantity, animal.img, id))
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Animal not found")
+
+        cursor.close()
+
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM animals WHERE id = %s", (id,))
+        return cursor.fetchone()
+
+    except Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+@app.delete("/api/animals/{id}")
+def delete_the_object(id: int):
+    conn = None
+    cursor = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("DELETE FROM animals WHERE id = %s", (id,))
+        conn.commit()
+        return {"message": "data deleted"}
+
+    except Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+
+
 
 
