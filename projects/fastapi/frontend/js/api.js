@@ -12,9 +12,27 @@ async function getAnimal(id) {
     return await res.json();
 }
 
-async function updateAnimal(id, data) {
+async function putAnimal(id, animal) {
     const res = await fetch(`${API_BASE_URL}/animals/${id}`, {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(animal)
+    });
+
+    if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.detail || "Failed to update animal (PUT)");
+    }
+
+    return await res.json();
+}
+
+
+async function patchAnimal(id, data) {
+    const res = await fetch(`${API_BASE_URL}/animals/${id}`, {
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
@@ -23,11 +41,12 @@ async function updateAnimal(id, data) {
 
     if (!res.ok) {
         const error = await res.json();
-        throw new Error(error.message || "Failed to update");
+        throw new Error(error.detail || "Failed to update animal (PATCH)");
     }
 
     return await res.json();
 }
+
 
 async function deleteAnimal(id) {
     const res = await fetch(`${API_BASE_URL}/animals/${id}`, {

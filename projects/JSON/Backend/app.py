@@ -91,7 +91,7 @@ def the_object(id):
 
             values.append(id)
 
-            sql = f"UPDATE animals SET {", ".join(fields)} WHERE id = %s"
+            sql = f"UPDATE animals SET {', '.join(fields)} WHERE id = %s"
 
             cursor.execute(sql, values)
             db.commit()

@@ -32,6 +32,8 @@
 
             try {
                 const animal = await getAnimal(id);
+                const originalAnimal = { ...animal };
+
 
                 if (!animal) {
                     container.textContent = "Animal not found.";
@@ -90,15 +92,41 @@
                     e.preventDefault();
 
                     const formData = new FormData(form);
-                    const data = {
+
+                    const edited = {
                         name: formData.get("name"),
                         price: parseFloat(formData.get("price")),
                         quantity: parseInt(formData.get("quantity")),
                         img: formData.get("img")
                     };
 
+                    const diff = {};
+
+                    for (const key in edited) {
+                        const orig = originalAnimal[key];
+                        const newVal = edited[key];
+
+                        // compare numbers and strings properly to avoid false positives
+                        if ((typeof newVal === "number" && Number(orig) !== newVal) ||
+                            (typeof newVal === "string" && (orig || "") !== newVal)) {
+                            diff[key] = newVal;
+                        }
+                    }
+
                     try {
-                        await updateAnimal(id, data);
+                        if (Object.keys(diff).length === 0) {
+                            status.textContent = "No changes to save.";
+                            status.style.color = "gray";
+                            return;
+                        }
+
+                        // PATCH if partial, PUT if full replace
+                        if (Object.keys(diff).length < Object.keys(edited).length) {
+                            await patchAnimal(id, diff);
+                        } else {
+                            await putAnimal(id, edited);
+                        }
+
                         window.location.href = "index.html";
 
                     } catch (err) {
